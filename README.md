@@ -2,7 +2,7 @@
 
 The ultimate companion app for Valorant enthusiasts. Whether you're a seasoned player or just getting started in the world of Valorant, this app is designed to enhance your knowledge and enjoyment of the game.
 
-![valguide-sample](https://github.com/Amjadaziz10/valguide-flutter/assets/61930704/e73d42e0-98a5-4ef6-b687-e2d8bd6616a0)
+<img src="https://github.com/Amjadaziz10/valguide-flutter/assets/61930704/e73d42e0-98a5-4ef6-b687-e2d8bd6616a0"  width="300"">
 
 ## Getting Started
 
