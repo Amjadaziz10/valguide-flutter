@@ -1,0 +1,111 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../core/services/models.dart';
+import '../../../../core/shared/colors.dart';
+import '../../../../core/shared/flutter_flow_theme.dart';
+import '../pages/quiz_page.dart';
+
+class TopicDrawer extends StatelessWidget {
+  final List<Topic> topics;
+  const TopicDrawer({super.key, required this.topics});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView.separated(
+          shrinkWrap: true,
+          itemCount: topics.length,
+          itemBuilder: (BuildContext context, int idx) {
+            Topic topic = topics[idx];
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 10, left: 10),
+                  child: Text(
+                    topic.title,
+                    // textAlign: TextAlign.left,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white70,
+                    ),
+                  ),
+                ),
+                QuizList(topic: topic)
+              ],
+            );
+          },
+          separatorBuilder: (BuildContext context, int idx) => const Divider()),
+    );
+  }
+}
+
+class QuizList extends StatelessWidget {
+  final Topic topic;
+  const QuizList({super.key, required this.topic});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: topic.quizzes.map(
+        (quiz) {
+          return Card(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            elevation: 4,
+            margin: const EdgeInsets.all(4),
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        QuizPage(quizId: quiz.id),
+                  ),
+                );
+              },
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                child: ListTile(
+                  title: Text(
+                    quiz.title,
+                    style: FlutterFlowTheme.of(context)
+                        .title1
+                        .override(fontFamily: 'Poppins', color: blackVal),
+                  ),
+                  subtitle: Text(
+                    quiz.description,
+                    overflow: TextOverflow.fade,
+                    style: FlutterFlowTheme.of(context).subtitle2.override(
+                        fontFamily: 'Poppins', color: blackVal, lineHeight: 2),
+                  ),
+                  leading: QuizBadge(topic: topic, quizId: quiz.id),
+                ),
+              ),
+            ),
+          );
+        },
+      ).toList(),
+    );
+  }
+}
+
+class QuizBadge extends StatelessWidget {
+  final String quizId;
+  final Topic topic;
+
+  const QuizBadge({super.key, required this.quizId, required this.topic});
+
+  @override
+  Widget build(BuildContext context) {
+    Report report = Provider.of<Report>(context);
+    List completed = report.topics[topic.id] ?? [];
+    if (completed.contains(quizId)) {
+      return const Icon(FontAwesomeIcons.solidCircle, color: Colors.green);
+    } else {
+      return const Icon(FontAwesomeIcons.solidCircle, color: Colors.grey);
+    }
+  }
+}
