@@ -5,6 +5,8 @@ import '../../core/shared/flutter_flow_theme.dart';
 import '../map/presentation/pages/map_page.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
