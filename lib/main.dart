@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:valguide3/core/route/routes.dart';
-import 'package:valguide3/features/agent/presentation/providers/agent_provider.dart';
 import 'core/services/firestore.dart';
 import 'core/services/models.dart';
-import 'features/gun/presentation/providers/gun_provider.dart';
-import 'features/map/presentation/providers/map_provider.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -30,43 +27,36 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => AgentProvider()),
-        ChangeNotifierProvider(create: (context) => MapProvider()),
-        ChangeNotifierProvider(create: (context) => GunProvider())
-      ],
-      child: FutureBuilder(
-        // Initialize FlutterFire:
-        future: _initialization,
-        builder: (context, snapshot) {
-          // Check for errors
-          if (snapshot.hasError) {
-            //error screen
-          }
+    return FutureBuilder(
+      // Initialize FlutterFire:
+      future: _initialization,
+      builder: (context, snapshot) {
+        // Check for errors
+        if (snapshot.hasError) {
+          //error screen
+        }
 
-          // Once complete, show your application
-          if (snapshot.connectionState == ConnectionState.done) {
-            return StreamProvider(
-              create: (_) => FirestoreService().streamReport(),
-              initialData: Report(),
-              child: MaterialApp(
-                title: 'ValGuide',
-                theme: ThemeData(
-                  primarySwatch: Colors.blueGrey,
-                ),
-                debugShowCheckedModeBanner: false,
-                routes: appRoutes,
+        // Once complete, show your application
+        if (snapshot.connectionState == ConnectionState.done) {
+          return StreamProvider(
+            create: (_) => FirestoreService().streamReport(),
+            initialData: Report(),
+            child: MaterialApp(
+              title: 'ValGuide',
+              theme: ThemeData(
+                primarySwatch: Colors.blueGrey,
               ),
-            );
-          }
-
-          // Otherwise, show something whilst waiting for initialization to complete
-          return const Center(
-            child: CircularProgressIndicator(),
+              debugShowCheckedModeBanner: false,
+              routes: appRoutes,
+            ),
           );
-        },
-      ),
+        }
+
+        // Otherwise, show something whilst waiting for initialization to complete
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
     );
   }
 }

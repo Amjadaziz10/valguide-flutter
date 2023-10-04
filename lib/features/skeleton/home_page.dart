@@ -1,7 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:valguide3/features/agent/presentation/pages/agent_page.dart';
-import 'package:valguide3/features/agent/presentation/widgets/agent_widgets.dart';
 import 'package:valguide3/features/gun/presentation/pages/gun_page.dart';
 import '../../core/shared/flutter_flow_theme.dart';
 import '../map/presentation/pages/map_page.dart';

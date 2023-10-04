@@ -1,6 +1,6 @@
-# valguide3
+# Valguide
 
-Valguide
+The ultimate companion app for Valorant enthusiasts. Whether you're a seasoned player or just getting started in the world of Valorant, this app is designed to enhance your knowledge and enjoyment of the game.
 
 ## Getting Started
 
