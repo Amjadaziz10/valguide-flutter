@@ -14,11 +14,11 @@ class AgentDetailPage extends StatefulWidget {
 }
 
 class _AgentDetailPageState extends State<AgentDetailPage> {
-  var buttonOffColor = Color(0xFFF9F9F9);
+  var buttonOffColor = whiteVal;
   var button1 = redVal;
-  var button2 = Color(0xFFF9F9F9);
-  var button3 = Color(0xFFF9F9F9);
-  var button4 = Color(0xFFF9F9F9);
+  var button2 = whiteVal;
+  var button3 = whiteVal;
+  var button4 = whiteVal;
   late var activeDescription = widget.agentItem.abilities[0].description;
 
   void deactiveButton() {
@@ -42,7 +42,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
           },
           child: const Icon(
             Icons.chevron_left_rounded,
-            color: Color(0xFFF9F9F9),
+            color: redVal,
             size: 32,
           ),
         ),
@@ -50,7 +50,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
           widget.agentItem.displayName,
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
-                color: Color(0xFFF9F9F9),
+                color: redVal,
               ),
         ),
         actions: [FavoriteButton()],
@@ -109,7 +109,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                         widget.agentItem.displayName,
                         style: FlutterFlowTheme.of(context).title2.override(
                               fontFamily: 'Poppins',
-                              color: Color(0xFFF9F9F9),
+                              color: redVal,
                             ),
                       ),
                     ),
@@ -127,7 +127,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                       widget.agentItem.role.displayName,
                       style: FlutterFlowTheme.of(context).subtitle1.override(
                             fontFamily: 'Poppins',
-                            color: Color(0xFFFF4655),
+                            color: redVal,
                           ),
                     ),
                   ),
@@ -144,7 +144,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                       widget.agentItem.description,
                       style: FlutterFlowTheme.of(context).bodyText2.override(
                             fontFamily: 'Poppins',
-                            color: Color(0xFFB9B6B6),
+                            color: greyVal,
                           ),
                     ),
                   ),
@@ -161,7 +161,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                       'Abilities',
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Poppins',
-                            color: Color(0xFFFF4655),
+                            color: redVal,
                           ),
                     ),
                   ),
@@ -236,7 +236,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                                       .bodyText2
                                       .override(
                                         fontFamily: 'Lexend Deca',
-                                        color: Color(0xFFB9B6B6),
+                                        color: greyVal,
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),
@@ -311,7 +311,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                                       .bodyText2
                                       .override(
                                         fontFamily: 'Lexend Deca',
-                                        color: Color(0xFFB9B6B6),
+                                        color: greyVal,
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),
@@ -386,7 +386,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                                       .bodyText2
                                       .override(
                                         fontFamily: 'Lexend Deca',
-                                        color: Color(0xFFB9B6B6),
+                                        color: greyVal,
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),
@@ -461,7 +461,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                                       .bodyText2
                                       .override(
                                         fontFamily: 'Lexend Deca',
-                                        color: Color(0xFFB9B6B6),
+                                        color: greyVal,
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),
@@ -486,7 +486,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                       activeDescription,
                       style: FlutterFlowTheme.of(context).bodyText2.override(
                             fontFamily: 'Poppins',
-                            color: Color(0xFFB9B6B6),
+                            color: greyVal,
                           ),
                     ),
                   ),
@@ -520,7 +520,7 @@ class FavoriteButtonState extends State<FavoriteButton> {
       buttonSize: 60,
       icon: Icon(
         isFavorite ? Icons.favorite : Icons.favorite_border,
-        color: Color(0xFFFF4655),
+        color: redVal,
         size: 40,
       ),
       onPressed: () {

@@ -10,6 +10,7 @@ class MapEntity {
 class MapDataEntity {
   String uuid;
   String displayName;
+  String narrativeDescription;
   String coordinates;
   String displayIcon;
   String listViewIcon;
@@ -17,6 +18,7 @@ class MapDataEntity {
   MapDataEntity({
     required this.uuid,
     required this.displayName,
+    required this.narrativeDescription,
     required this.coordinates,
     required this.displayIcon,
     required this.listViewIcon,

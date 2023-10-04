@@ -23,6 +23,7 @@ class MapDataModel extends MapDataEntity {
   MapDataModel({
     required String uuid,
     required String displayName,
+    required String narrativeDescription,
     required String coordinates,
     required String displayIcon,
     required String listViewIcon,
@@ -30,6 +31,7 @@ class MapDataModel extends MapDataEntity {
   }) : super(
             uuid: uuid,
             displayName: displayName,
+            narrativeDescription: narrativeDescription,
             coordinates: coordinates,
             displayIcon: displayIcon,
             listViewIcon: listViewIcon,
@@ -37,7 +39,7 @@ class MapDataModel extends MapDataEntity {
 
   @override
   String toString() {
-    return 'MapDataModel(uuid: $uuid, displayName: $displayName, coordinates: $coordinates, displayIcon: $displayIcon, listViewIcon: $listViewIcon, splash: $splash)';
+    return 'MapDataModel(uuid: $uuid, displayName: $displayName,narrativeDescription: $narrativeDescription, coordinates: $coordinates, displayIcon: $displayIcon, listViewIcon: $listViewIcon, splash: $splash)';
   }
 
   factory MapDataModel.fromJson(Map<String, dynamic> json) =>

@@ -21,6 +21,7 @@ Map<String, dynamic> _$MapModelToJson(MapModel instance) => <String, dynamic>{
 MapDataModel _$MapDataModelFromJson(Map<String, dynamic> json) => MapDataModel(
       uuid: json['uuid'] as String? ?? '',
       displayName: json['displayName'] as String? ?? '',
+      narrativeDescription: json['narrativeDescription'] as String? ?? '',
       coordinates: json['coordinates'] as String? ?? '',
       displayIcon: json['displayIcon'] as String? ?? '',
       listViewIcon: json['listViewIcon'] as String? ?? '',
@@ -31,6 +32,7 @@ Map<String, dynamic> _$MapDataModelToJson(MapDataModel instance) =>
     <String, dynamic>{
       'uuid': instance.uuid,
       'displayName': instance.displayName,
+      'narrativeDescription': instance.narrativeDescription,
       'coordinates': instance.coordinates,
       'displayIcon': instance.displayIcon,
       'listViewIcon': instance.listViewIcon,
