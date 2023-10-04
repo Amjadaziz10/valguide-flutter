@@ -28,7 +28,7 @@ class _GunPageState extends State<GunPage> {
 
   Widget _buildListGun() {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
+      padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
       child: BlocProvider(
         create: (context) => _gunBloc,
         child: BlocBuilder<GunBloc, GunState>(builder: (context, state) {
@@ -36,9 +36,9 @@ class _GunPageState extends State<GunPage> {
             return Center(child: buildCircularProgressIndicator());
           } else if (state is GunLoaded) {
             return Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
+              padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
               child: ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 padding: EdgeInsets.zero,
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
@@ -52,7 +52,8 @@ class _GunPageState extends State<GunPage> {
                       }));
                     },
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 4),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(16, 4, 16, 4),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -60,13 +61,14 @@ class _GunPageState extends State<GunPage> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
-                          child: Container(
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
+                          child: SizedBox(
                             width: double.infinity,
                             child: Stack(
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       10, 30, 0, 0),
                                   child: Hero(
                                     tag: gunItem.displayName,

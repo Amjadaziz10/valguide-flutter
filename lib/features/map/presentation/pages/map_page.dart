@@ -39,7 +39,7 @@ class _MapPageState extends State<MapPage> {
             return Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
               child: ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 padding: EdgeInsets.zero,
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
@@ -62,14 +62,16 @@ class _MapPageState extends State<MapPage> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Expanded(
                                 child: Stack(
-                                  alignment: AlignmentDirectional(0, 0.95),
+                                  alignment:
+                                      const AlignmentDirectional(0, 0.95),
                                   children: [
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(8),
@@ -82,7 +84,8 @@ class _MapPageState extends State<MapPage> {
                                       ),
                                     ),
                                     Align(
-                                      alignment: AlignmentDirectional(-0.95, 0),
+                                      alignment:
+                                          const AlignmentDirectional(-0.95, 0),
                                       child: Hero(
                                         tag: mapItem.displayName,
                                         child: Text(

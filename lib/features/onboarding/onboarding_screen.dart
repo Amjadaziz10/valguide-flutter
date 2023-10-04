@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -260,7 +259,7 @@ class OnboardingScreen extends StatelessWidget {
                                 curve: Curves.ease,
                               );
                             },
-                            effect: ExpandingDotsEffect(
+                            effect: const ExpandingDotsEffect(
                               expansionFactor: 2,
                               spacing: 8,
                               radius: 16,

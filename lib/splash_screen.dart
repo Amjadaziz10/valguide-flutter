@@ -1,6 +1,6 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:valguide3/init_screen.dart';
+
+import 'core/shared/colors.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -42,7 +42,7 @@ class SplashScreen extends StatelessWidget {
                 'VALGUIDE',
                 style: TextStyle(
                   fontFamily: 'Valorant',
-                  color: Color(0xFF9E9E9E),
+                  color: greyVal,
                   fontSize: 42,
                 ),
               ),

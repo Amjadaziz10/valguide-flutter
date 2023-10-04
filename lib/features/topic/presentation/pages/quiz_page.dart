@@ -1,9 +1,7 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:valguide3/features/topic/presentation/providers/quiz_state_providers.dart';
-
 import '../../../../core/services/firestore.dart';
 import '../../../../core/services/models.dart';
 import '../../../../core/shared/colors.dart';
@@ -78,8 +76,9 @@ class StartPage extends StatelessWidget {
         children: [
           Text(
             quiz.title,
-            style: FlutterFlowTheme.of(context).title1.override(
-                fontFamily: 'Poppins', color: Color(0xFFF9F9F9), fontSize: 36),
+            style: FlutterFlowTheme.of(context)
+                .title1
+                .override(fontFamily: 'Poppins', color: whiteVal, fontSize: 36),
           ),
           const Divider(
             color: whiteVal,

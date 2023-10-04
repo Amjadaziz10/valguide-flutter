@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
@@ -56,7 +54,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       borderRadius: 30,
                       borderWidth: 1,
                       buttonSize: 50,
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.arrow_back_rounded,
                         color: whiteVal,
                         size: 24,

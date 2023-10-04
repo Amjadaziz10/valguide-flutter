@@ -1,14 +1,10 @@
-import 'package:valguide3/features/agent/business/entities/agent_entity.dart';
-import 'package:valguide3/features/agent/presentation/pages/agent_detail_page.dart';
 import 'package:valguide3/init_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
 import '../../features/skeleton/skeleton.dart';
-import '../../splash_screen.dart';
 import '../../features/login/login_screen.dart';
 import '../../features/register/register_screen.dart';
 
 var appRoutes = {
-  // '/': (context) => const SplashScreen(),
   '/': (context) => const InitScreen(),
   '/onboarding': (context) => const OnboardingScreen(),
   '/login': (context) => const LoginScreen(),

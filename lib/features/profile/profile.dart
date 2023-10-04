@@ -39,18 +39,16 @@ class ProfilePage extends StatelessWidget {
                   style: FlutterFlowTheme.of(context).subtitle1.override(
                         lineHeight: 3,
                         fontFamily: 'Poppins',
-                        color: Color(0xFFF9F9F9),
+                        color: whiteVal,
                       )),
               const Spacer(),
               Text('${report.total}',
                   style: FlutterFlowTheme.of(context).title1.override(
-                      fontFamily: 'Poppins',
-                      color: Color(0xFFF9F9F9),
-                      fontSize: 64)),
+                      fontFamily: 'Poppins', color: whiteVal, fontSize: 64)),
               Text('Quizzes Completed',
                   style: FlutterFlowTheme.of(context).subtitle2.override(
                         fontFamily: 'Poppins',
-                        color: Color(0xFFF9F9F9),
+                        color: whiteVal,
                       )),
               const Spacer(),
             ],

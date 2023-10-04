@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:valguide3/core/shared/colors.dart';
 import 'package:valguide3/features/agent/presentation/pages/agent_page.dart';
 import 'package:valguide3/features/gun/presentation/pages/gun_page.dart';
 import '../../core/shared/flutter_flow_theme.dart';
@@ -24,10 +25,10 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 TabBar(
-                  labelColor: Color(0xFFFF4655),
-                  unselectedLabelColor: Color(0xFFB9B6B6),
+                  labelColor: redVal,
+                  unselectedLabelColor: greyVal,
                   labelStyle: FlutterFlowTheme.of(context).subtitle1,
-                  indicatorColor: Color(0xFFFF4655),
+                  indicatorColor: redVal,
                   tabs: const [
                     Tab(
                       text: 'Agents',
@@ -57,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                                     .title3
                                     .override(
                                       fontFamily: 'Poppins',
-                                      color: Color(0xFFF9F9F9),
+                                      color: whiteVal,
                                     ),
                               ),
                             ),
@@ -76,15 +77,15 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(16, 16, 0, 4),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  16, 16, 0, 4),
                               child: Text(
                                 'Maps',
                                 style: FlutterFlowTheme.of(context)
                                     .title3
                                     .override(
                                       fontFamily: 'Poppins',
-                                      color: Color(0xFFF9F9F9),
+                                      color: whiteVal,
                                     ),
                               ),
                             ),
@@ -103,15 +104,15 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(16, 16, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  16, 16, 0, 0),
                               child: Text(
                                 'Guns',
                                 style: FlutterFlowTheme.of(context)
                                     .title3
                                     .override(
                                       fontFamily: 'Poppins',
-                                      color: Color(0xFFF9F9F9),
+                                      color: const Color(0xFFF9F9F9),
                                     ),
                               ),
                             ),

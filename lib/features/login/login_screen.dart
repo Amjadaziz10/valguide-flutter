@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius: 30,
                     borderWidth: 1,
                     buttonSize: 50,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_back_rounded,
                       color: whiteVal,
                       size: 24,
@@ -137,14 +137,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
-                        color: Color(0x00000000),
+                        color: Colors.black,
                         width: 0,
                       ),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
-                        color: Color(0x00000000),
+                        color: Colors.black,
                         width: 0,
                       ),
                       borderRadius: BorderRadius.circular(12),
@@ -165,11 +165,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 60,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       blurRadius: 5,
                       color: blackVal,
-                      offset: const Offset(0, 2),
+                      offset: Offset(0, 2),
                     )
                   ],
                   borderRadius: BorderRadius.circular(8),
@@ -188,14 +188,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
-                        color: Color(0x00000000),
+                        color: Colors.black,
                         width: 0,
                       ),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
-                        color: Color(0x00000000),
+                        color: Colors.black,
                         width: 0,
                       ),
                       borderRadius: BorderRadius.circular(12),
@@ -266,16 +266,16 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const OrDivider(),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(24, 24, 24, 24),
+              padding: const EdgeInsetsDirectional.fromSTEB(24, 24, 24, 24),
               child: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
                 borderRadius: 10,
                 borderWidth: 1,
                 buttonSize: 60,
-                fillColor: Color(0xFFFF4031),
-                icon: FaIcon(
+                fillColor: const Color(0xFFFF4031),
+                icon: const FaIcon(
                   FontAwesomeIcons.google,
-                  color: Color(0xFFF9F9F9),
+                  color: whiteVal,
                   size: 30,
                 ),
                 onPressed: () {
