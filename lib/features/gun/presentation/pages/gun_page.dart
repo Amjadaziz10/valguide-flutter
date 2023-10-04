@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:valguide3/features/gun/presentation/bloc/gun_bloc.dart';
+import 'package:valguide3/features/gun/presentation/pages/gun_detail_page.dart';
 import '../../../../core/shared/flutter_flow_theme.dart';
 import '../../../../core/shared/loading.dart';
 
@@ -44,7 +45,12 @@ class _GunPageState extends State<GunPage> {
                 itemBuilder: (BuildContext context, int index) {
                   var gunItem = state.gunEntity.data[index];
                   return InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return GunDetailPage(gunItem: gunItem);
+                      }));
+                    },
                     child: Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 4),
                       child: Container(
@@ -62,25 +68,31 @@ class _GunPageState extends State<GunPage> {
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       10, 30, 0, 0),
-                                  child: Text(
-                                    gunItem.displayName.toUpperCase(),
-                                    style: FlutterFlowTheme.of(context)
-                                        .title1
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w900,
-                                        ),
+                                  child: Hero(
+                                    tag: gunItem.displayName,
+                                    child: Text(
+                                      gunItem.displayName.toUpperCase(),
+                                      style: FlutterFlowTheme.of(context)
+                                          .title1
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            fontWeight: FontWeight.w900,
+                                          ),
+                                    ),
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(1, 0),
+                                  alignment: const AlignmentDirectional(1, 0),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(2),
-                                    child: CachedNetworkImage(
-                                      imageUrl: gunItem.displayIcon,
-                                      width: 180,
-                                      height: 70,
-                                      fit: BoxFit.contain,
+                                    child: Hero(
+                                      tag: gunItem.displayIcon,
+                                      child: CachedNetworkImage(
+                                        imageUrl: gunItem.displayIcon,
+                                        width: 180,
+                                        height: 70,
+                                        fit: BoxFit.contain,
+                                      ),
                                     ),
                                   ),
                                 ),
