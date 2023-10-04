@@ -2,9 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:valguide3/features/map/presentation/bloc/map_bloc.dart';
-
+import '../../../../core/shared/colors.dart';
 import '../../../../core/shared/flutter_flow_theme.dart';
 import '../../../../core/shared/loading.dart';
+import 'map_detail_page.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({Key? key}) : super(key: key);
@@ -28,7 +29,7 @@ class _MapPageState extends State<MapPage> {
 
   Widget _buildListMap() {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
+      padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
       child: BlocProvider(
         create: (context) => _mapBloc,
         child: BlocBuilder<MapBloc, MapState>(builder: (context, state) {
@@ -36,7 +37,7 @@ class _MapPageState extends State<MapPage> {
             return Center(child: buildCircularProgressIndicator());
           } else if (state is MapLoaded) {
             return Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
+              padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
               child: ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 padding: EdgeInsets.zero,
@@ -45,13 +46,19 @@ class _MapPageState extends State<MapPage> {
                 itemBuilder: (BuildContext context, int index) {
                   var mapItem = state.mapEntity.data[index];
                   return InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return MapDetailPage(mapItem: mapItem);
+                      }));
+                    },
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 4),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(16, 4, 16, 4),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
-                          color: Color(0xFFF9F9F9),
+                          color: whiteVal,
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Padding(
@@ -76,15 +83,18 @@ class _MapPageState extends State<MapPage> {
                                     ),
                                     Align(
                                       alignment: AlignmentDirectional(-0.95, 0),
-                                      child: Text(
-                                        mapItem.displayName.toUpperCase(),
-                                        style: FlutterFlowTheme.of(context)
-                                            .title1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color: Color(0xFFF9F9F9),
-                                              fontWeight: FontWeight.w900,
-                                            ),
+                                      child: Hero(
+                                        tag: mapItem.displayName,
+                                        child: Text(
+                                          mapItem.displayName.toUpperCase(),
+                                          style: FlutterFlowTheme.of(context)
+                                              .title1
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: whiteVal,
+                                                fontWeight: FontWeight.w900,
+                                              ),
+                                        ),
                                       ),
                                     ),
                                   ],
