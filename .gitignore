@@ -4,5 +4,6 @@
 /lib/keys.dart
 /.dart_tool
 /build
-.flutter-plugins-dependencies
-.flutter-plugins
+/.vs_code
+/.flutter-plugins-dependencies
+/.flutter-plugins
