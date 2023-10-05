@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:valguide3/core/shared/colors.dart';
 import 'package:valguide3/features/agent/presentation/pages/agent_page.dart';
+import 'package:valguide3/features/agent/presentation/pages/favorite_agent_page.dart';
 import 'package:valguide3/features/gun/presentation/pages/gun_page.dart';
+import '../../core/shared/flutter_flow_icon_button.dart';
 import '../../core/shared/flutter_flow_theme.dart';
 import '../map/presentation/pages/map_page.dart';
 
@@ -49,18 +51,42 @@ class _HomePageState extends State<HomePage> {
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  16, 16, 0, 4),
-                              child: Text(
-                                'Agents',
-                                style: FlutterFlowTheme.of(context)
-                                    .title3
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: whiteVal,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      16, 0, 16, 0),
+                                  child: Text(
+                                    'Agents',
+                                    style: FlutterFlowTheme.of(context)
+                                        .title3
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: whiteVal,
+                                        ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      16, 0, 16, 0),
+                                  child: FlutterFlowIconButton(
+                                    borderRadius: 30,
+                                    buttonSize: 60,
+                                    icon: const Icon(
+                                      Icons.favorite,
+                                      color: Color(0xFFF9F9F9),
+                                      size: 30,
                                     ),
-                              ),
+                                    onPressed: () {
+                                      Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) {
+                                        return const FavoriteAgentPage();
+                                      }));
+                                    },
+                                  ),
+                                ),
+                              ],
                             ),
                             LayoutBuilder(
                               builder: (BuildContext context,

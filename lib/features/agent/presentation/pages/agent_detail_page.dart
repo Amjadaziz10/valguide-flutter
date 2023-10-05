@@ -1,6 +1,12 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:valguide3/features/agent/business/entities/agent_entity.dart';
+import 'package:valguide3/features/agent/data/models/agent_model.dart';
+
+import '../../../../core/services/firestore.dart';
 import '../../../../core/shared/colors.dart';
 import '../../../../core/shared/flutter_flow_icon_button.dart';
 import '../../../../core/shared/flutter_flow_theme.dart';
@@ -32,9 +38,25 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    return StreamProvider(
+        create: (_) => FirestoreService().streamFavAgent(),
+        initialData: AgentDataModel(
+            abilities: [],
+            role: RoleModel(
+                description: '', displayIcon: '', displayName: '', uuid: ''),
+            background: '',
+            description: '',
+            displayIcon: '',
+            displayName: '',
+            fullPortraitV2: '',
+            uuid: ''),
+        child: _buildAgentDetailPage());
+  }
+
+  Widget _buildAgentDetailPage() {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF1B252D),
+        backgroundColor: const Color(0xFF1B252D),
         automaticallyImplyLeading: false,
         leading: InkWell(
           onTap: () async {
@@ -53,11 +75,11 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                 color: redVal,
               ),
         ),
-        actions: [FavoriteButton()],
+        actions: [FavoriteButton(agentItem: widget.agentItem)],
         centerTitle: false,
         elevation: 0,
       ),
-      backgroundColor: Color(0xFF1B252D),
+      backgroundColor: const Color(0xFF1B252D),
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -67,23 +89,22 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                     child: Stack(
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
-                          child: Hero(
-                            tag: widget.agentItem.background,
-                            child: CachedNetworkImage(
-                              imageUrl: widget.agentItem.background,
-                              width: MediaQuery.of(context).size.width,
-                              height: 230,
-                              fit: BoxFit.fitHeight,
-                            ),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
+                          child: CachedNetworkImage(
+                            imageUrl: widget.agentItem.background,
+                            width: MediaQuery.of(context).size.width,
+                            height: 230,
+                            fit: BoxFit.fitHeight,
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 100, 0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0, 0, 100, 0),
                           child: CachedNetworkImage(
                             imageUrl: widget.agentItem.fullPortraitV2,
                             width: MediaQuery.of(context).size.width,
@@ -98,27 +119,24 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
               ],
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 12, 20, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(20, 12, 20, 0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Expanded(
-                    child: Hero(
-                      tag: widget.agentItem.displayName,
-                      child: Text(
-                        widget.agentItem.displayName,
-                        style: FlutterFlowTheme.of(context).title2.override(
-                              fontFamily: 'Poppins',
-                              color: redVal,
-                            ),
-                      ),
+                    child: Text(
+                      widget.agentItem.displayName,
+                      style: FlutterFlowTheme.of(context).title2.override(
+                            fontFamily: 'Poppins',
+                            color: redVal,
+                          ),
                     ),
                   ),
                 ],
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 4, 20, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(20, 4, 20, 0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -135,7 +153,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 12, 20, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(20, 12, 20, 0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -152,7 +170,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 12, 20, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(20, 12, 20, 0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -169,7 +187,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 12),
+              padding: const EdgeInsetsDirectional.fromSTEB(0, 8, 0, 12),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -196,7 +214,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                                   borderRadius: BorderRadius.circular(40),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       4, 4, 4, 4),
                                   child: Stack(
                                     children: [
@@ -204,14 +222,14 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                                         width: 60,
                                         height: 60,
                                         clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: CachedNetworkImage(
                                           imageUrl: widget.agentItem
                                               .abilities[0].displayIcon,
                                           fit: BoxFit.cover,
-                                          color: Color(0xFF1B252D)
+                                          color: const Color(0xFF1B252D)
                                               .withOpacity(0.9),
                                         ),
                                       ),
@@ -227,8 +245,8 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                           children: [
                             Expanded(
                               child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0, 4, 0, 0),
                                 child: Text(
                                   widget.agentItem.abilities[0].displayName,
                                   textAlign: TextAlign.center,
@@ -271,7 +289,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                                   borderRadius: BorderRadius.circular(40),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       4, 4, 4, 4),
                                   child: Stack(
                                     children: [
@@ -279,14 +297,14 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                                         width: 60,
                                         height: 60,
                                         clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: CachedNetworkImage(
                                           imageUrl: widget.agentItem
                                               .abilities[1].displayIcon,
                                           fit: BoxFit.cover,
-                                          color: Color(0xFF1B252D)
+                                          color: const Color(0xFF1B252D)
                                               .withOpacity(0.9),
                                         ),
                                       ),
@@ -302,8 +320,8 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                           children: [
                             Expanded(
                               child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0, 4, 0, 0),
                                 child: Text(
                                   widget.agentItem.abilities[1].displayName,
                                   textAlign: TextAlign.center,
@@ -346,7 +364,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                                   borderRadius: BorderRadius.circular(40),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       4, 4, 4, 4),
                                   child: Stack(
                                     children: [
@@ -354,14 +372,14 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                                         width: 60,
                                         height: 60,
                                         clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: CachedNetworkImage(
                                           imageUrl: widget.agentItem
                                               .abilities[2].displayIcon,
                                           fit: BoxFit.cover,
-                                          color: Color(0xFF1B252D)
+                                          color: const Color(0xFF1B252D)
                                               .withOpacity(0.9),
                                         ),
                                       ),
@@ -377,8 +395,8 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                           children: [
                             Expanded(
                               child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0, 4, 0, 0),
                                 child: Text(
                                   widget.agentItem.abilities[2].displayName,
                                   textAlign: TextAlign.center,
@@ -421,7 +439,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                                   borderRadius: BorderRadius.circular(40),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       4, 4, 4, 4),
                                   child: Stack(
                                     children: [
@@ -429,14 +447,14 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                                         width: 60,
                                         height: 60,
                                         clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: CachedNetworkImage(
                                           imageUrl: widget.agentItem
                                               .abilities[3].displayIcon,
                                           fit: BoxFit.cover,
-                                          color: Color(0xFF1B252D)
+                                          color: const Color(0xFF1B252D)
                                               .withOpacity(0.9),
                                         ),
                                       ),
@@ -452,8 +470,8 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                           children: [
                             Expanded(
                               child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0, 4, 0, 0),
                                 child: Text(
                                   widget.agentItem.abilities[3].displayName,
                                   textAlign: TextAlign.center,
@@ -477,7 +495,7 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 12, 20, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(20, 12, 20, 0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -503,7 +521,11 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
 bool isFavorite = false;
 
 class FavoriteButton extends StatefulWidget {
-  const FavoriteButton({Key? key}) : super(key: key);
+  AgentDataEntity agentItem;
+  FavoriteButton({
+    Key? key,
+    required this.agentItem,
+  }) : super(key: key);
 
   @override
   FavoriteButtonState createState() => FavoriteButtonState();
@@ -524,6 +546,7 @@ class FavoriteButtonState extends State<FavoriteButton> {
         size: 40,
       ),
       onPressed: () {
+        FirestoreService().updateUserFavAgent(widget.agentItem);
         setState(() {
           isFavorite = !isFavorite;
           if (isFavorite) {

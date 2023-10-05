@@ -33,30 +33,28 @@ class _HomeScreenState extends State<HomeScreen> {
       appBarUser = AuthService().user!.displayName!;
     }
     List<Widget> listWidget = [
-      HomePage(),
+      const HomePage(),
       const TopicPage(),
       const ProfilePage()
     ];
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF1B252D),
+        backgroundColor: const Color(0xFF1B252D),
         automaticallyImplyLeading: false,
         title: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+          padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
           child: Text(
             'Hello, $appBarUser!',
             style: FlutterFlowTheme.of(context).subtitle1.override(
                   fontFamily: 'Poppins',
-                  color: Color(0xFFF9F9F9),
+                  color: const Color(0xFFF9F9F9),
                 ),
           ),
         ),
         actions: [
           FlutterFlowIconButton(
-            borderColor: Colors.transparent,
             borderRadius: 30,
-            borderWidth: 1,
             buttonSize: 60,
             icon: const Icon(
               Icons.logout,
@@ -71,20 +69,20 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: false,
         elevation: 0,
       ),
-      backgroundColor: Color(0xFF1B252D),
+      backgroundColor: const Color(0xFF1B252D),
       body: listWidget[_selectedIndex],
       bottomNavigationBar: Container(
         color: blackVal,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
           child: GNav(
             backgroundColor: blackVal,
             color: whiteVal,
             activeColor: whiteVal,
             tabBackgroundColor: redVal.withOpacity(0.6),
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             gap: 8,
-            tabs: [
+            tabs: const [
               GButton(
                 icon: FontAwesomeIcons.home,
                 text: 'Home',

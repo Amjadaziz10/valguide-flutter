@@ -44,7 +44,7 @@ class TopicItem extends StatelessWidget {
                     topic.title,
                     style: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Poppins',
-                          color: Color(0xFFF9F9F9),
+                          color: whiteVal,
                         ),
                     overflow: TextOverflow.fade,
                     softWrap: false,
@@ -90,8 +90,9 @@ class TopicScreen extends StatelessWidget {
         ),
         Text(
           topic.title,
-          style: FlutterFlowTheme.of(context).subtitle2.override(
-              fontFamily: 'Poppins', color: Color(0xFFF9F9F9), lineHeight: 2),
+          style: FlutterFlowTheme.of(context)
+              .subtitle2
+              .override(fontFamily: 'Poppins', color: whiteVal, lineHeight: 2),
         ),
         QuizList(topic: topic)
       ]),

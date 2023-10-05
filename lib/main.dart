@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:valguide3/core/route/routes.dart';
 import 'core/services/firestore.dart';
 import 'core/services/models.dart';
+import 'features/agent/data/models/agent_model.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -38,9 +39,15 @@ class _MyAppState extends State<MyApp> {
 
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
-          return StreamProvider(
-            create: (_) => FirestoreService().streamReport(),
-            initialData: Report(),
+          return MultiProvider(
+            providers: [
+              StreamProvider(
+                  create: (_) => FirestoreService().streamReport(),
+                  initialData: Report()),
+              StreamProvider(
+                  create: (_) => FirestoreService().streamFavAgent(),
+                  initialData: AgentModel(status: 0, data: List.empty())),
+            ],
             child: MaterialApp(
               title: 'ValGuide',
               theme: ThemeData(
